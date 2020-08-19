@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  product: MyString
+  name: MyString
+  code: MyString
+  number: MyString
+  plant: MyString
+  volume: MyString
+  ratio: MyString
+  life: MyString
+  sop: MyString
+  eop: MyString
+  project_manger: MyString
+  vehicle_id: MyString
+
+two:
+  product: MyString
+  name: MyString
+  code: MyString
+  number: MyString
+  plant: MyString
+  volume: MyString
+  ratio: MyString
+  life: MyString
+  sop: MyString
+  eop: MyString
+  project_manger: MyString
+  vehicle_id: MyString

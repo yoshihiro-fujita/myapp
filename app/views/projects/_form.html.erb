@@ -1,0 +1,77 @@
+<%= form_with(model: project, local: true) do |form| %>
+  <% if project.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+      <ul>
+      <% project.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :product %>
+    <%= form.text_field :product %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :code %>
+    <%= form.text_field :code %>
+  </div>
+
+  <div class="field">
+    <%= form.label :number %>
+    <%= form.text_field :number %>
+  </div>
+
+  <div class="field">
+    <%= form.label :plant %>
+    <%= form.text_field :plant %>
+  </div>
+
+  <div class="field">
+    <%= form.label :volume %>
+    <%= form.text_field :volume %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ratio %>
+    <%= form.text_field :ratio %>
+  </div>
+
+  <div class="field">
+    <%= form.label :life %>
+    <%= form.text_field :life %>
+  </div>
+
+  <div class="field">
+    <%= form.label :sop %>
+    <%= form.text_field :sop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :eop %>
+    <%= form.text_field :eop %>
+  </div>
+
+  <div class="field">
+    <%= form.label :project_manger %>
+    <%= form.text_field :project_manger %>
+  </div>
+
+  <div class="field">
+    <%= form.label :vehicle_id %>
+    <%= form.collection_select(:vehidle_id, Vehicle.all, :id,:name,include_blank: '選択してください') %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
