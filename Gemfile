@@ -44,6 +44,7 @@ group :development, :test do
   gem 'pry-doc'
   gem 'pry-byebug'
   gem 'pry-stack_explorer'
+  gem 'sqlite3'
 end
 
 group :development do
@@ -54,6 +55,9 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
+
+group :production do
+  gem 'pg'
 
 group :test do
   # Adds support for Capybara system testing and selenium driver
@@ -68,3 +72,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'jquery-rails'
 gem "carrierwave"
 gem 'mini_magick'
+end
+
