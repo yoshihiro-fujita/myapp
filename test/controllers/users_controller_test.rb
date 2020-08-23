@@ -2,7 +2,7 @@ require 'test_helper'
 
 class UsersControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @user = users(:michel)
+    @user = users(:michael)
     @other_user = users(:archer)
   end
 
@@ -18,7 +18,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
 
   test "should create user" do
     assert_difference('User.count') do
-      post users_url, params: { user: { email: @user.email, name: @user.name, user_id: @user.user_id } }
+      post users_url, params: { user: { email: @user.email, name: @user.name, id: @user.id } }
     end
 
     assert_redirected_to user_url(User.last)
@@ -35,7 +35,7 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "should update user" do
-    patch user_url(@user), params: { user: { email: @user.email, name: @user.name, user_id: @user.user_id } }
+    patch user_url(@user), params: { user: { email: @user.email, name: @user.name, id: @user.id } }
     assert_redirected_to user_url(@user)
   end
 
@@ -63,12 +63,12 @@ class UsersControllerTest < ActionDispatch::IntegrationTest
     log_in_as(@other_user)
     assert_not @other_user.admin?
     patch user_path(@other_user), params: {
-                                    user: { password:              FILL_IN,
-                                            password_confirmation: FILL_IN,
-                                            admin: FILL_IN } }
-    assert_not @other_user.FILL_IN.admin?
+                                    user: { password: @other_user.password,
+                                            password_confirmation: @other_user.password_confirmation,
+                                            admin: true } }
+  assert_not @other_user.reload.admin?
   end
-
+  
   test "should redirect destroy when not logged in" do
     assert_no_difference 'User.count' do
       delete user_path(@user)
