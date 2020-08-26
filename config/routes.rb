@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   post   '/login',   to: 'sessions#create'
   delete '/logout',  to: 'sessions#destroy'
 
+  get 'projects/home' => 'projects#home'
+
   resources :projects
   resources :vehicles
   resources :users

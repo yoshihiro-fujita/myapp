@@ -1,12 +1,57 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
+    <% if logged_in? && current_user.admin %>
+      <%= link_to 'Myapp', projects_home_path, id: "logo" %>
+      <% elsif logged_in? && !current_user.admin%>
+      <%= link_to 'Myapp', projects_path, id: "logo" %>
+      <% else %>
       <%= link_to 'Myapp', root_path, id: "logo" %>
+      <% end %>
+
       <nav>
         <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? && current_user.admin%>
+          <li><%= link_to "Home",   projects_home_path %></li>
+          <li><%= link_to "Help",   help_path %></li>
+          <li><%= link_to "Users", users_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Car <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "New car", new_vehicle_path %></li>
+              <li><%= link_to "Cars", vehicles_path %></li>
+            </ul>
+          </li>
+        
+         <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Project <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "New project", new_project_path %></li>
+              <li><%= link_to "Projects", projects_path %></li>
+            </ul>
+          </li>
+
+          <% elsif logged_in? && !current_user.admin %>
+          <li><%= link_to "Home",   projects_path %></li>
+          <li><%= link_to "Help",   help_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Project <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "New project", new_project_path %></li>
+              <li><%= link_to "Projects", projects_path %></li>
+            </ul>
+          </li>
+        <% else %>
           <li><%= link_to "Home",   root_path %></li>
           <li><%= link_to "Help",   help_path %></li>
-          <% if logged_in? %>
-          <li><%= link_to "Users", users_path %></li>
+          <% end %>
+         
+         <% if logged_in?%>
           <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown">
               Account <b class="caret"></b>

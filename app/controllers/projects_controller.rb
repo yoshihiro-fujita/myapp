@@ -1,6 +1,10 @@
 class ProjectsController < ApplicationController
   before_action :set_project, only: [:show, :edit, :update, :destroy]
 
+  def home
+    @projects = Project.all
+    @vehicles = Vehicle.all
+  end
   # GET /projects
   # GET /projects.json
   def index
